@@ -13,6 +13,7 @@
       background: #f5f7fa;
       color: #222;
       line-height: 1.6;
+      scroll-behavior: smooth;
     }
 
     header {
@@ -20,6 +21,9 @@
       padding: 3rem 1rem 2rem;
       background: linear-gradient(135deg, #003366, #00509e);
       color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
     header img {
@@ -43,16 +47,21 @@
 
     nav {
       margin-top: 1rem;
+      background: rgba(0,0,0,0.1);
+      padding: 0.5rem 0;
+      border-radius: 8px;
     }
 
     nav a {
       color: #ffdd57;
-      margin: 0 0.8rem;
+      margin: 0 1rem;
       text-decoration: none;
       font-weight: 600;
+      transition: color 0.3s;
     }
 
-    nav a:hover {
+    nav a:hover,
+    nav a.active {
       color: white;
     }
 
@@ -96,15 +105,16 @@
 </head>
 <body>
 
-  <header>
+  <header id="header">
     <img src="images/yassinepic.jpg" alt="Yassine Hariri">
     <h1>Yassine Hariri, PhD</h1>
     <p>Manager, IoT & Edge AI | Member of the CTO Office | Strategic Technology Leader</p>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#publications">Publications</a>
-      <a href="#talks">Talks</a>
-      <a href="#contact">Contact</a>
+    <nav id="navbar">
+      <a href="#about" class="nav-link">About</a>
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#ecosystem" class="nav-link">Ecosystem Development</a>
+      <a href="#publications" class="nav-link">Publications</a>
+      <a href="#contact" class="nav-link">Contact</a>
     </nav>
   </header>
 
@@ -120,6 +130,30 @@
         I am committed to building scalable platforms that empower researchers, startups, and industry across 
         green tech, EVs, smart health, precision agriculture, Industry 4.0, and defence.
       </p>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="card">
+      <strong>Project A</strong><br>
+      Description of Project A. <a href="projects/projectA.html">Learn more</a>
+    </div>
+    <div class="card">
+      <strong>Project B</strong><br>
+      Description of Project B. <a href="projects/projectB.html">Learn more</a>
+    </div>
+  </section>
+
+  <section id="ecosystem">
+    <h2>Ecosystem Development</h2>
+    <div class="card">
+      <strong>Initiative X</strong><br>
+      Description of Initiative X. <a href="ecosystem/initiativeX.html">Learn more</a>
+    </div>
+    <div class="card">
+      <strong>Initiative Y</strong><br>
+      Description of Initiative Y. <a href="ecosystem/initiativeY.html">Learn more</a>
     </div>
   </section>
 
@@ -139,32 +173,45 @@
     </div>
   </section>
 
-  <section id="talks">
-    <h2>Talks & Workshops</h2>
-    <div class="card">
-      <strong>Accelerating AI Workshop (2020–2025)</strong><br>
-      Organizer and speaker of CMC’s flagship annual AI workshop, uniting industry and academia 
-      around ML, AI hardware-software co-design, and real-time analytics.
-    </div>
-    <div class="card">
-      <strong>Hardware-Aware Acceleration for Deep Neural Networks</strong><br>
-      CMC Workshop, March 2020
-    </div>
-  </section>
-
   <section id="contact">
     <h2>Contact</h2>
     <div class="card contact">
       <a href="mailto:hariri.yassine@outlook.com">Email</a>
-      <a href="https://www.linkedin.com/in/yassinehariri">LinkedIn</a>
-      <a href="https://twitter.com/HaririYassine">Twitter</a>
-      <a href="Profile.pdf">Download CV (PDF)</a>
+      <a href="talks.html">Talks</a>
+      <a href="workshops.html">Workshops</a>
+      <a href="https://scholar.google.com/citations?hl=en&view_op=list_works&gmla=AH8HC4yjsheRh_Pv7aoyWzT1xIq6VqJvZhz5aGs_KxMwSWJvYN9aDCFufBmIDMbkqKyRrGRo5xFZSCeZNMBy1A&user=Jsu7EsMAAAAJ">Google Scholar</a>
+      <a href="github.html">Github</a>
+      <a href="https://www.linkedin.com/in/yassinehariri/">LinkedIn</a>
+      <a href="CV.pdf">CV</a>
     </div>
   </section>
 
   <footer>
     © 2025 Yassine Hariri
   </footer>
+
+  <script>
+    // Highlight active nav link on scroll
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (pageYOffset >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').includes(current)) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>
