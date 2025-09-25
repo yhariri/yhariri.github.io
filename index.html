@@ -3,121 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Yassine Hariri, PhD</title>
+<title>About - Yassine Hariri</title>
+<link rel="stylesheet" href="css/styles.css">
 <link rel="icon" href="images/yassinepic.jpg">
-<style>
-  body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    margin: 0; padding: 0;
-    background: #f4f6f8;
-    color: #222;
-    line-height: 1.6;
-  }
-
-  /* --- Header --- */
-  header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    padding: 1rem 2rem;
-    position: sticky;
-    top: 0;
-    background: #1f2a36;
-    color: #fff;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    z-index: 1000;
-  }
-
-  header img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    border: 3px solid #4db6ac;
-    object-fit: cover;
-  }
-
-  nav {
-    display: flex;
-    gap: 1.5rem;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  nav a {
-    color: #b2dfdb;
-    text-decoration: none;
-    font-weight: 600;
-    padding: 0.3rem 0;
-  }
-
-  nav a:hover, nav a.active { 
-    color: #4db6ac;
-  }
-
-  section {
-    max-width: 900px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-  }
-
-  section h2 {
-    border-bottom: 2px solid #4db6ac;
-    padding-bottom: 0.5rem;
-    margin-bottom: 1rem;
-    color: #333;
-  }
-
-  .card {
-    background: white;
-    border-radius: 10px;
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  }
-
-  .contact a {
-    display: inline-block;
-    margin: 0.3rem 0.6rem;
-    text-decoration: none;
-    color: #00796b;
-    font-weight: bold;
-  }
-
-  .contact a:hover { color: #004d40; }
-
-  footer {
-    text-align: center;
-    padding: 1.5rem;
-    background: #1f2a36;
-    color: white;
-    margin-top: 2rem;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-  }
-
-  /* Ensure anchor links account for sticky header */
-  :target::before {
-    content: "";
-    display: block;
-    height: 100px; /* equal to header height */
-    margin-top: -100px; 
-  }
-
-</style>
 </head>
 <body>
 
 <header>
   <img src="images/yassinepic.jpg" alt="Yassine Hariri">
-  <nav id="navbar">
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#ecosystem">Ecosystem Development</a>
-    <a href="#github">GitHub</a>
-    <a href="#publications">Publications</a>
-    <a href="#youtube">YouTube Channel</a>
-    <a href="#contact">Contact</a>
+  <nav>
+    <a href="index.html" class="active">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="ecosystem.html">Ecosystem Development</a>
+    <a href="github.html">GitHub</a>
+    <a href="publications.html">Publications</a>
+    <a href="youtube.html">YouTube Channel</a>
+    <a href="contact.html">Contact</a>
   </nav>
 </header>
 
@@ -150,62 +51,6 @@
     <br>
     <strong>Let’s Connect</strong>
     <p>If you're developing IoT and edge AI systems, working on real-time analytics, or looking to shape innovation strategy—I’d be happy to connect.</p>
-  </div>
-</section>
-
-<section id="projects">
-  <h2>Projects</h2>
-  <div class="card"><strong>Project A</strong><br><a href="projects/projectA.html">Learn more</a></div>
-  <div class="card"><strong>Project B</strong><br><a href="projects/projectB.html">Learn more</a></div>
-</section>
-
-<section id="ecosystem">
-  <h2>Ecosystem Development</h2>
-  <div class="card"><strong>Initiative X</strong><br><a href="ecosystem/initiativeX.html">Learn more</a></div>
-  <div class="card"><strong>Initiative Y</strong><br><a href="ecosystem/initiativeY.html">Learn more</a></div>
-</section>
-
-<section id="github">
-  <h2>GitHub</h2>
-  <div class="card">
-    <a href="https://github.com/yhariri?tab=repositories" target="_blank">My GitHub Repositories</a>
-  </div>
-</section>
-
-<section id="publications">
-  <h2>Publications</h2>
-  <div class="card">
-    <a href="https://scholar.google.com/citations?hl=en&view_op=list_works&gmla=AH8HC4yjsheRh_Pv7aoyWzT1xIq6VqJvZhz5aGs_KxMwSWJvYN9aDCFufBmIDMbkqKyRrGRo5xFZSCeZNMBy1A&user=Jsu7EsMAAAAJ" target="_blank">Google Scholar Profile</a>
-  </div>
-  <div class="card"><strong>Bridging fault diagnostic tool</strong><br>IET Computers & Digital Techniques, 2007</div>
-  <div class="card"><strong>Early Soft Error Sensitivity Analysis</strong><br>JETTA, 2013</div>
-  <div class="card"><strong>On an adaptive high quality test optimization strategy</strong><br>Defect Based Testing, 2006</div>
-</section>
-
-<section id="youtube">
-  <h2>YouTube Channel</h2>
-  <div class="card">
-    <!-- Placeholder list, user can add links later -->
-    <ul>
-      <li>IoT & Edge AI Playlist</li>
-      <li>Accelerating AI Workshop 2025 – Challenges and Opportunities</li>
-      <li>Webinar - Edge-Based Generative AI for IoT Applications</li>
-      <li>Real-Time Video Surveillance and Anomaly Detection</li>
-      <li>Accelerating AI Workshop 2024</li>
-      <li>Webinar: Introduction to Tenstorrent Grayskull™ e150</li>
-      <li>Accelerating Deep Learning for Embedded Vision at the Edge</li>
-    </ul>
-  </div>
-</section>
-
-<section id="contact">
-  <h2>Contact</h2>
-  <div class="card contact">
-    <a href="mailto:hariri.yassine@outlook.com">Email</a>
-    <a href="talks.html">Talks</a>
-    <a href="workshops.html">Workshops</a>
-    <a href="https://www.linkedin.com/in/yassinehariri/">LinkedIn</a>
-    <a href="CV.pdf">CV</a>
   </div>
 </section>
 
