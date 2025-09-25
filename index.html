@@ -6,7 +6,6 @@
   <title>Yassine Hariri, PhD</title>
   <link rel="icon" href="images/yassinepic.jpg">
   <style>
-    /* --- Base --- */
     * { box-sizing: border-box; }
     body {
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -20,7 +19,7 @@
       text-align: center;
       padding: 2rem 1rem 1rem;
       position: sticky; top: 0; z-index: 1000;
-      background: rgba(0, 48, 102, 0.85);
+      background: rgba(0, 128, 64, 0.85); /* Green */
       backdrop-filter: blur(12px);
       box-shadow: 0 4px 16px rgba(0,0,0,0.25);
       border-bottom-left-radius: 15px;
@@ -36,7 +35,7 @@
 
     header img:hover { transform: scale(1.07); }
 
-    header h1 { margin: 0.5rem 0; font-size: 2rem; color: #ffdd57; }
+    header h1 { margin: 0.5rem 0; font-size: 2rem; color: #a8ff60; } /* light green */
     header p { margin: 0.3rem 0; font-size: 1.1rem; color: #fff; opacity: 0.9; }
 
     /* --- Navigation --- */
@@ -45,7 +44,7 @@
     }
 
     nav a {
-      color: #ffdd57;
+      color: #a8ff60;
       margin: 0 1rem;
       text-decoration: none;
       font-weight: 600;
@@ -54,11 +53,11 @@
       transition: color 0.3s, transform 0.3s;
     }
 
-    nav a:hover { color: #fff; transform: scale(1.05); }
+    nav a:hover { color: #ffffff; transform: scale(1.05); }
 
     .underline {
       position: absolute; height: 3px;
-      background: #ffdd57; bottom: 0; left: 0;
+      background: #a8ff60; bottom: 0; left: 0;
       transition: all 0.3s ease; border-radius: 2px;
     }
 
@@ -72,9 +71,9 @@
     section.visible { opacity: 1; transform: translateY(0); }
 
     section h2 {
-      border-bottom: 2px solid #003366;
+      border-bottom: 2px solid #008040; /* Dark green */
       padding-bottom: 0.5rem; margin-bottom: 1rem;
-      color: #003366;
+      color: #008040;
     }
 
     .card {
@@ -88,16 +87,16 @@
 
     .contact a {
       display: inline-block; margin: 0.3rem 0.6rem;
-      text-decoration: none; color: #003366;
+      text-decoration: none; color: #008040;
       font-weight: bold; transition: color 0.3s, transform 0.3s;
     }
 
-    .contact a:hover { color: #00509e; transform: scale(1.05); }
+    .contact a:hover { color: #00b060; transform: scale(1.05); }
 
     /* --- Footer --- */
     footer {
       text-align: center; padding: 1.5rem;
-      background: #003366; color: white; margin-top: 2rem;
+      background: #008040; color: white; margin-top: 2rem;
       border-top-left-radius: 15px; border-top-right-radius: 15px;
     }
 
@@ -125,7 +124,6 @@
     </nav>
   </header>
 
-  <!-- Sections -->
   <section id="about">
     <h2>About Me</h2>
     <div class="card">
@@ -168,7 +166,6 @@
   <footer>© 2025 Yassine Hariri</footer>
 
   <script>
-    // --- Animated underline ---
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.nav-link');
     const underline = document.querySelector('.underline');
@@ -193,8 +190,6 @@
           updateUnderline(link);
         }
       });
-
-      // Fade-in sections
       sections.forEach(section => {
         const rect = section.getBoundingClientRect();
         if (rect.top < window.innerHeight - 100) section.classList.add('visible');
@@ -204,7 +199,6 @@
     window.addEventListener('load', () => {
       const activeLink = document.querySelector('.nav-link.active') || navLinks[0];
       updateUnderline(activeLink);
-      // Initial fade-in
       sections.forEach(section => {
         const rect = section.getBoundingClientRect();
         if (rect.top < window.innerHeight - 100) section.classList.add('visible');
