@@ -1,214 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Yassine Hariri, PhD</title>
-  <link rel="icon" href="images/yassinepic.jpg">
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      margin: 0; padding: 0;
-      background: #f5f7fa; color: #222;
-      line-height: 1.6; scroll-behavior: smooth;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yassine Hariri, PhD</title>
+<link rel="icon" href="images/yassinepic.jpg">
+<style>
+  * { box-sizing: border-box; margin:0; padding:0; }
+  body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: #f4f6f8;
+    color: #222;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+  }
 
-    /* --- Header --- */
+  /* --- Header --- */
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    background: #1f2a36; /* Dark gray-blue */
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 1000;
+  }
+
+  header img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid #4db6ac; /* Teal accent */
+    object-fit: cover;
+  }
+
+  nav {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  nav a {
+    color: #b2dfdb;
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    padding: 0.3rem 0;
+    transition: color 0.3s, transform 0.3s;
+  }
+
+  nav a:hover, nav a.active { 
+    color: #4db6ac;
+    transform: scale(1.05);
+  }
+
+  .underline {
+    position: absolute;
+    height: 3px;
+    background: #4db6ac;
+    bottom: 0;
+    left: 0;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+  }
+
+  /* --- Sections --- */
+  section {
+    max-width: 850px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+  }
+
+  section.visible { opacity: 1; transform: translateY(0); }
+
+  section h2 {
+    border-bottom: 2px solid #4db6ac;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+
+  .card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  }
+
+  .contact a {
+    display: inline-block;
+    margin: 0.3rem 0.6rem;
+    text-decoration: none;
+    color: #00796b;
+    font-weight: bold;
+    transition: color 0.3s, transform 0.3s;
+  }
+
+  .contact a:hover { color: #004d40; transform: scale(1.05); }
+
+  footer {
+    text-align: center;
+    padding: 1.5rem;
+    background: #1f2a36;
+    color: white;
+    margin-top: 2rem;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+
+  /* --- Responsive --- */
+  @media (max-width: 768px){
     header {
-      text-align: center;
-      padding: 2rem 1rem 1rem;
-      position: sticky; top: 0; z-index: 1000;
-      background: rgba(0, 128, 64, 0.85); /* Green */
-      backdrop-filter: blur(12px);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
-      border-bottom-left-radius: 15px;
-      border-bottom-right-radius: 15px;
+      flex-direction: column;
+      gap: 1rem;
     }
-
-    header img {
-      width: 150px; height: 150px;
-      border-radius: 50%; border: 4px solid white;
-      margin-bottom: 1rem;
-      transition: transform 0.3s;
-    }
-
-    header img:hover { transform: scale(1.07); }
-
-    header h1 { margin: 0.5rem 0; font-size: 2rem; color: #a8ff60; } /* light green */
-    header p { margin: 0.3rem 0; font-size: 1.1rem; color: #fff; opacity: 0.9; }
-
-    /* --- Navigation --- */
-    nav {
-      position: relative; display: inline-block; margin-top: 1rem;
-    }
-
-    nav a {
-      color: #a8ff60;
-      margin: 0 1rem;
-      text-decoration: none;
-      font-weight: 600;
-      padding: 0.2rem 0;
-      position: relative;
-      transition: color 0.3s, transform 0.3s;
-    }
-
-    nav a:hover { color: #ffffff; transform: scale(1.05); }
-
-    .underline {
-      position: absolute; height: 3px;
-      background: #a8ff60; bottom: 0; left: 0;
-      transition: all 0.3s ease; border-radius: 2px;
-    }
-
-    /* --- Sections --- */
-    section {
-      max-width: 850px; margin: 3rem auto; padding: 0 1rem;
-      opacity: 0; transform: translateY(30px);
-      transition: all 0.8s ease-out;
-    }
-
-    section.visible { opacity: 1; transform: translateY(0); }
-
-    section h2 {
-      border-bottom: 2px solid #008040; /* Dark green */
-      padding-bottom: 0.5rem; margin-bottom: 1rem;
-      color: #008040;
-    }
-
-    .card {
-      background: white; border-radius: 10px;
-      padding: 1.5rem; margin-bottom: 1.5rem;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .card:hover { transform: translateY(-5px); box-shadow: 0 6px 20px rgba(0,0,0,0.12); }
-
-    .contact a {
-      display: inline-block; margin: 0.3rem 0.6rem;
-      text-decoration: none; color: #008040;
-      font-weight: bold; transition: color 0.3s, transform 0.3s;
-    }
-
-    .contact a:hover { color: #00b060; transform: scale(1.05); }
-
-    /* --- Footer --- */
-    footer {
-      text-align: center; padding: 1.5rem;
-      background: #008040; color: white; margin-top: 2rem;
-      border-top-left-radius: 15px; border-top-right-radius: 15px;
-    }
-
-    /* --- Responsive --- */
-    @media (max-width: 600px) {
-      header img { width: 120px; height: 120px; }
-      nav a { margin: 0 0.5rem; font-size: 0.95rem; }
-      section { margin: 2rem auto; }
-    }
-  </style>
+    nav { justify-content: center; gap: 1rem; }
+    header img { width: 100px; height: 100px; }
+  }
+</style>
 </head>
 <body>
 
-  <header id="header">
-    <img src="images/yassinepic.jpg" alt="Yassine Hariri">
-    <h1>Yassine Hariri, PhD</h1>
-    <p>Manager, IoT & Edge AI | Member of the CTO Office | Strategic Technology Leader</p>
-    <nav id="navbar">
-      <a href="#about" class="nav-link">About</a>
-      <a href="#projects" class="nav-link">Projects</a>
-      <a href="#ecosystem" class="nav-link">Ecosystem Development</a>
-      <a href="#publications" class="nav-link">Publications</a>
-      <a href="#contact" class="nav-link">Contact</a>
-      <div class="underline"></div>
-    </nav>
-  </header>
+<header>
+  <img src="images/yassinepic.jpg" alt="Yassine Hariri">
+  <nav id="navbar">
+    <a href="#about" class="nav-link">About</a>
+    <a href="#projects" class="nav-link">Projects</a>
+    <a href="#ecosystem" class="nav-link">Ecosystem Development</a>
+    <a href="#publications" class="nav-link">Publications</a>
+    <a href="#contact" class="nav-link">Contact</a>
+    <div class="underline"></div>
+  </nav>
+</header>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <div class="card">
-      <p>I bring over 17 years of experience developing advanced AI & IoT systems...</p>
-      <p>Committed to building scalable platforms empowering startups and industry.</p>
-    </div>
-  </section>
+<section id="about">
+  <h2>About Me</h2>
+  <div class="card">
+    <p>I bring over 17 years of experience developing advanced AI & IoT systems...</p>
+    <p>Committed to building scalable platforms empowering startups and industry.</p>
+  </div>
+</section>
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="card"><strong>Project A</strong><br><a href="projects/projectA.html">Learn more</a></div>
-    <div class="card"><strong>Project B</strong><br><a href="projects/projectB.html">Learn more</a></div>
-  </section>
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="card"><strong>Project A</strong><br><a href="projects/projectA.html">Learn more</a></div>
+  <div class="card"><strong>Project B</strong><br><a href="projects/projectB.html">Learn more</a></div>
+</section>
 
-  <section id="ecosystem">
-    <h2>Ecosystem Development</h2>
-    <div class="card"><strong>Initiative X</strong><br><a href="ecosystem/initiativeX.html">Learn more</a></div>
-    <div class="card"><strong>Initiative Y</strong><br><a href="ecosystem/initiativeY.html">Learn more</a></div>
-  </section>
+<section id="ecosystem">
+  <h2>Ecosystem Development</h2>
+  <div class="card"><strong>Initiative X</strong><br><a href="ecosystem/initiativeX.html">Learn more</a></div>
+  <div class="card"><strong>Initiative Y</strong><br><a href="ecosystem/initiativeY.html">Learn more</a></div>
+</section>
 
-  <section id="publications">
-    <h2>Selected Publications</h2>
-    <div class="card"><strong>Bridging fault diagnostic tool</strong><br>IET Computers & Digital Techniques, 2007</div>
-    <div class="card"><strong>Early Soft Error Sensitivity Analysis</strong><br>JETTA, 2013</div>
-  </section>
+<section id="publications">
+  <h2>Selected Publications</h2>
+  <div class="card"><strong>Bridging fault diagnostic tool</strong><br>IET Computers & Digital Techniques, 2007</div>
+  <div class="card"><strong>Early Soft Error Sensitivity Analysis</strong><br>JETTA, 2013</div>
+</section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <div class="card contact">
-      <a href="mailto:hariri.yassine@outlook.com">Email</a>
-      <a href="talks.html">Talks</a>
-      <a href="workshops.html">Workshops</a>
-      <a href="https://scholar.google.com/citations?hl=en&view_op=list_works&user=Jsu7EsMAAAAJ">Google Scholar</a>
-      <a href="github.html">Github</a>
-      <a href="https://www.linkedin.com/in/yassinehariri/">LinkedIn</a>
-      <a href="CV.pdf">CV</a>
-    </div>
-  </section>
+<section id="contact">
+  <h2>Contact</h2>
+  <div class="card contact">
+    <a href="mailto:hariri.yassine@outlook.com">Email</a>
+    <a href="talks.html">Talks</a>
+    <a href="workshops.html">Workshops</a>
+    <a href="https://scholar.google.com/citations?hl=en&view_op=list_works&user=Jsu7EsMAAAAJ">Google Scholar</a>
+    <a href="github.html">Github</a>
+    <a href="https://www.linkedin.com/in/yassinehariri/">LinkedIn</a>
+    <a href="CV.pdf">CV</a>
+  </div>
+</section>
 
-  <footer>© 2025 Yassine Hariri</footer>
+<footer>© 2025 Yassine Hariri</footer>
 
-  <script>
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('.nav-link');
-    const underline = document.querySelector('.underline');
+<script>
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('.nav-link');
+  const underline = document.querySelector('.underline');
 
-    function updateUnderline(link) {
-      const rect = link.getBoundingClientRect();
-      const navRect = link.parentElement.getBoundingClientRect();
-      underline.style.width = rect.width + 'px';
-      underline.style.transform = `translateX(${rect.left - navRect.left}px)`;
-    }
+  function updateUnderline(link){
+    const rect = link.getBoundingClientRect();
+    const navRect = link.parentElement.getBoundingClientRect();
+    underline.style.width = rect.width + 'px';
+    underline.style.transform = `translateX(${rect.left - navRect.left}px)`;
+  }
 
-    window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - 120;
-        if (pageYOffset >= sectionTop) current = section.getAttribute('id');
-      });
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href').includes(current)) {
-          link.classList.add('active');
-          updateUnderline(link);
-        }
-      });
-      sections.forEach(section => {
-        const rect = section.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 100) section.classList.add('visible');
-      });
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 120;
+      if (pageYOffset >= sectionTop) current = section.getAttribute('id');
     });
-
-    window.addEventListener('load', () => {
-      const activeLink = document.querySelector('.nav-link.active') || navLinks[0];
-      updateUnderline(activeLink);
-      sections.forEach(section => {
-        const rect = section.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 100) section.classList.add('visible');
-      });
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if(link.getAttribute('href').includes(current)){
+        link.classList.add('active');
+        updateUnderline(link);
+      }
     });
-
-    window.addEventListener('resize', () => {
-      const activeLink = document.querySelector('.nav-link.active') || navLinks[0];
-      updateUnderline(activeLink);
+    sections.forEach(section=>{
+      const rect = section.getBoundingClientRect();
+      if(rect.top < window.innerHeight - 100) section.classList.add('visible');
     });
-  </script>
+  });
+
+  window.addEventListener('load', () => {
+    const activeLink = document.querySelector('.nav-link.active') || navLinks[0];
+    updateUnderline(activeLink);
+    sections.forEach(section=>{
+      const rect = section.getBoundingClientRect();
+      if(rect.top < window.innerHeight - 100) section.classList.add('visible');
+    });
+  });
+
+  window.addEventListener('resize', ()=>{
+    const activeLink = document.querySelector('.nav-link.active') || navLinks[0];
+    updateUnderline(activeLink);
+  });
+</script>
+
 </body>
 </html>
