@@ -6,13 +6,12 @@
 <title>Yassine Hariri, PhD</title>
 <link rel="icon" href="images/yassinepic.jpg">
 <style>
-  * { box-sizing: border-box; margin:0; padding:0; }
   body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: 0; padding: 0;
     background: #f4f6f8;
     color: #222;
     line-height: 1.6;
-    scroll-behavior: smooth;
   }
 
   /* --- Header --- */
@@ -24,7 +23,7 @@
     padding: 1rem 2rem;
     position: sticky;
     top: 0;
-    background: #1f2a36; /* Dark gray-blue */
+    background: #1f2a36;
     color: #fff;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     z-index: 1000;
@@ -34,7 +33,7 @@
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    border: 3px solid #4db6ac; /* Teal accent */
+    border: 3px solid #4db6ac;
     object-fit: cover;
   }
 
@@ -49,37 +48,18 @@
     color: #b2dfdb;
     text-decoration: none;
     font-weight: 600;
-    position: relative;
     padding: 0.3rem 0;
-    transition: color 0.3s, transform 0.3s;
   }
 
   nav a:hover, nav a.active { 
     color: #4db6ac;
-    transform: scale(1.05);
   }
 
-  .underline {
-    position: absolute;
-    height: 3px;
-    background: #4db6ac;
-    bottom: 0;
-    left: 0;
-    transition: all 0.3s ease;
-    border-radius: 2px;
-  }
-
-  /* --- Sections --- */
   section {
-    max-width: 850px;
+    max-width: 900px;
     margin: 2rem auto;
     padding: 0 1rem;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s ease-out;
   }
-
-  section.visible { opacity: 1; transform: translateY(0); }
 
   section h2 {
     border-bottom: 2px solid #4db6ac;
@@ -94,12 +74,6 @@
     padding: 1.5rem;
     margin-bottom: 1.5rem;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-
-  .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
   }
 
   .contact a {
@@ -108,10 +82,9 @@
     text-decoration: none;
     color: #00796b;
     font-weight: bold;
-    transition: color 0.3s, transform 0.3s;
   }
 
-  .contact a:hover { color: #004d40; transform: scale(1.05); }
+  .contact a:hover { color: #004d40; }
 
   footer {
     text-align: center;
@@ -123,15 +96,14 @@
     border-top-right-radius: 10px;
   }
 
-  /* --- Responsive --- */
-  @media (max-width: 768px){
-    header {
-      flex-direction: column;
-      gap: 1rem;
-    }
-    nav { justify-content: center; gap: 1rem; }
-    header img { width: 100px; height: 100px; }
+  /* Ensure anchor links account for sticky header */
+  :target::before {
+    content: "";
+    display: block;
+    height: 100px; /* equal to header height */
+    margin-top: -100px; 
   }
+
 </style>
 </head>
 <body>
@@ -139,20 +111,45 @@
 <header>
   <img src="images/yassinepic.jpg" alt="Yassine Hariri">
   <nav id="navbar">
-    <a href="#about" class="nav-link">About</a>
-    <a href="#projects" class="nav-link">Projects</a>
-    <a href="#ecosystem" class="nav-link">Ecosystem Development</a>
-    <a href="#publications" class="nav-link">Publications</a>
-    <a href="#contact" class="nav-link">Contact</a>
-    <div class="underline"></div>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#ecosystem">Ecosystem Development</a>
+    <a href="#github">GitHub</a>
+    <a href="#publications">Publications</a>
+    <a href="#youtube">YouTube Channel</a>
+    <a href="#contact">Contact</a>
   </nav>
 </header>
 
 <section id="about">
-  <h2>About Me</h2>
+  <h2>About</h2>
   <div class="card">
-    <p>I bring over 17 years of experience developing advanced AI & IoT systems...</p>
-    <p>Committed to building scalable platforms empowering startups and industry.</p>
+    <strong>About</strong><br>
+    I bring over 17 years of experience developing and deploying advanced systems at the intersection of AI, IoT, embedded computing, and the cloud-to-edge continuum. My focus is on enabling real-time, distributed intelligence by integrating AI with IoT, turning research into deployable solutions. I’m committed to building scalable, reusable platforms that empower researchers, startups, and industry to deliver meaningful impact across sectors such as green tech, EVs, smart health, precision agriculture, Industry 4.0, and defence.
+    <br><br>
+    <strong>Leadership & Impact</strong>
+    <ul>
+      <li>Leading cross-functional teams that integrate sensor systems, edge AI platforms, and real-time analytics</li>
+      <li>Forging strategic collaborations with industry, academia, and government through successful national initiatives</li>
+      <li>Advancing the innovation ecosystem via technical workshops (e.g., the annual Accelerating AI workshop 2020-2025), webinars, and GitHub projects</li>
+      <li>Designing and deploying AI infrastructure using GPUs, NPUs, FPGAs, and ultra-low-power AI inference accelerators</li>
+      <li>Providing hands-on expertise, training, and mentorship to manufacturers and startups to accelerate AI commercialization</li>
+      <li>Hosting flagship events uniting industry and academia around ML, AI, and hardware-software co-design</li>
+    </ul>
+    <strong>Research & Innovation</strong>
+    <p>My research focuses on:</p>
+    <ul>
+      <li>AI hardware acceleration and generative AI</li>
+      <li>Fault diagnostics in CMOS and soft error analysis in SRAM FPGAs</li>
+      <li>MEMS switch optimization for RF applications</li>
+    </ul>
+    These research areas are backed by a strong record of peer-reviewed journal and conference publications—see my Google Scholar profile for a full list.
+    <br><br>
+    <strong>Technical Expertise</strong>
+    <p>Edge/Cloud Computing | AI/ML Optimization | IoT | FPGA | GPU Acceleration | VLSI | Silicon Design | 5G | Embedded Systems | AI Engineering | Research Leadership | AI Hardware | Publications | Project Management | Canadian Innovation Ecosystem</p>
+    <br>
+    <strong>Let’s Connect</strong>
+    <p>If you're developing IoT and edge AI systems, working on real-time analytics, or looking to shape innovation strategy—I’d be happy to connect.</p>
   </div>
 </section>
 
@@ -168,10 +165,37 @@
   <div class="card"><strong>Initiative Y</strong><br><a href="ecosystem/initiativeY.html">Learn more</a></div>
 </section>
 
+<section id="github">
+  <h2>GitHub</h2>
+  <div class="card">
+    <a href="https://github.com/yhariri?tab=repositories" target="_blank">My GitHub Repositories</a>
+  </div>
+</section>
+
 <section id="publications">
-  <h2>Selected Publications</h2>
+  <h2>Publications</h2>
+  <div class="card">
+    <a href="https://scholar.google.com/citations?hl=en&view_op=list_works&gmla=AH8HC4yjsheRh_Pv7aoyWzT1xIq6VqJvZhz5aGs_KxMwSWJvYN9aDCFufBmIDMbkqKyRrGRo5xFZSCeZNMBy1A&user=Jsu7EsMAAAAJ" target="_blank">Google Scholar Profile</a>
+  </div>
   <div class="card"><strong>Bridging fault diagnostic tool</strong><br>IET Computers & Digital Techniques, 2007</div>
   <div class="card"><strong>Early Soft Error Sensitivity Analysis</strong><br>JETTA, 2013</div>
+  <div class="card"><strong>On an adaptive high quality test optimization strategy</strong><br>Defect Based Testing, 2006</div>
+</section>
+
+<section id="youtube">
+  <h2>YouTube Channel</h2>
+  <div class="card">
+    <!-- Placeholder list, user can add links later -->
+    <ul>
+      <li>IoT & Edge AI Playlist</li>
+      <li>Accelerating AI Workshop 2025 – Challenges and Opportunities</li>
+      <li>Webinar - Edge-Based Generative AI for IoT Applications</li>
+      <li>Real-Time Video Surveillance and Anomaly Detection</li>
+      <li>Accelerating AI Workshop 2024</li>
+      <li>Webinar: Introduction to Tenstorrent Grayskull™ e150</li>
+      <li>Accelerating Deep Learning for Embedded Vision at the Edge</li>
+    </ul>
+  </div>
 </section>
 
 <section id="contact">
@@ -180,60 +204,12 @@
     <a href="mailto:hariri.yassine@outlook.com">Email</a>
     <a href="talks.html">Talks</a>
     <a href="workshops.html">Workshops</a>
-    <a href="https://scholar.google.com/citations?hl=en&view_op=list_works&user=Jsu7EsMAAAAJ">Google Scholar</a>
-    <a href="github.html">Github</a>
     <a href="https://www.linkedin.com/in/yassinehariri/">LinkedIn</a>
     <a href="CV.pdf">CV</a>
   </div>
 </section>
 
 <footer>© 2025 Yassine Hariri</footer>
-
-<script>
-  const sections = document.querySelectorAll('section');
-  const navLinks = document.querySelectorAll('.nav-link');
-  const underline = document.querySelector('.underline');
-
-  function updateUnderline(link){
-    const rect = link.getBoundingClientRect();
-    const navRect = link.parentElement.getBoundingClientRect();
-    underline.style.width = rect.width + 'px';
-    underline.style.transform = `translateX(${rect.left - navRect.left}px)`;
-  }
-
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 120;
-      if (pageYOffset >= sectionTop) current = section.getAttribute('id');
-    });
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if(link.getAttribute('href').includes(current)){
-        link.classList.add('active');
-        updateUnderline(link);
-      }
-    });
-    sections.forEach(section=>{
-      const rect = section.getBoundingClientRect();
-      if(rect.top < window.innerHeight - 100) section.classList.add('visible');
-    });
-  });
-
-  window.addEventListener('load', () => {
-    const activeLink = document.querySelector('.nav-link.active') || navLinks[0];
-    updateUnderline(activeLink);
-    sections.forEach(section=>{
-      const rect = section.getBoundingClientRect();
-      if(rect.top < window.innerHeight - 100) section.classList.add('visible');
-    });
-  });
-
-  window.addEventListener('resize', ()=>{
-    const activeLink = document.querySelector('.nav-link.active') || navLinks[0];
-    updateUnderline(activeLink);
-  });
-</script>
 
 </body>
 </html>
