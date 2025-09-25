@@ -1,16 +1,13 @@
-## Hi there 👋
+# yhariri.github.io
 
-<!--
-**yhariri/yhariri** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+Personal website of **Yassine Hariri, PhD** – Manager, IoT & Edge AI | Member of the CTO Office | Strategic Technology Leader.  
 
-Here are some ideas to get you started:
+Built with HTML, CSS, and JavaScript. Hosted on **GitHub Pages**.
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+🔗 [Visit my site](https://yhariri.github.io)
+
+## Features
+- Professional homepage with experience & publications
+- About page with background and research interests
+- Responsive design with custom CSS
+- Smooth scrolling navigation
