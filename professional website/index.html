@@ -1,0 +1,1686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yassine Hariri — Engineer · Researcher · Leader</title>
+  <meta name="description" content="Yassine Hariri, PhD — Manager IoT &amp; Edge AI, CMC Microsystems. 17+ years in ASIC/FPGA design, edge AI, embedded systems, and national semiconductor initiatives." />
+  <meta name="keywords" content="Yassine Hariri, ASIC, FPGA, Edge AI, IoT, CMC Microsystems, Jetson Orin, TensorRT, VHDL, embedded systems" />
+  <meta name="author" content="Yassine Hariri" />
+  <meta property="og:title" content="Yassine Hariri — Engineer · Researcher · Leader" />
+  <meta property="og:description" content="Bridging silicon to intelligence — from ASIC design to edge AI deployment at scale." />
+  <meta property="og:type" content="website" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===========================================
+       RESET & CUSTOM PROPERTIES
+    =========================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg:          #0D0D0D;
+      --bg-2:        #111111;
+      --bg-3:        #161616;
+      --bg-4:        #1A1A1A;
+      --accent:      #FFB800;
+      --accent-dim:  rgba(255, 184, 0, 0.08);
+      --accent-glow: rgba(255, 184, 0, 0.22);
+      --text:        #EFEFEF;
+      --text-2:      #9A9A9A;
+      --text-3:      #555555;
+      --border:      #1E1E1E;
+      --border-l:    #2C2C2C;
+      --font-h:      'Syne', sans-serif;
+      --font-m:      'Space Mono', monospace;
+      --font-b:      'Inter', sans-serif;
+      --r:           3px;
+      --pad:         clamp(64px, 8vw, 120px);
+      --max:         1200px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-b);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar              { width: 4px; }
+    ::-webkit-scrollbar-track        { background: var(--bg); }
+    ::-webkit-scrollbar-thumb        { background: var(--accent); border-radius: 2px; }
+    ::selection                      { background: var(--accent); color: #000; }
+
+    img { display: block; max-width: 100%; }
+    a   { color: var(--accent); text-decoration: none; transition: opacity .2s; }
+    a:hover { opacity: .75; }
+
+    /* ===========================================
+       LAYOUT UTILS
+    =========================================== */
+    .wrap {
+      max-width: var(--max);
+      margin-inline: auto;
+      padding-inline: clamp(24px, 5vw, 60px);
+    }
+
+    section {
+      padding-block: var(--pad);
+    }
+
+    .s-label {
+      font-family: var(--font-m);
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .s-label::before { content: '// '; opacity: .5; }
+
+    .s-title {
+      font-family: var(--font-h);
+      font-size: clamp(30px, 4vw, 50px);
+      font-weight: 800;
+      line-height: 1.05;
+      margin-bottom: 56px;
+      position: relative;
+    }
+    .s-title::after {
+      content: '';
+      display: block;
+      width: 44px;
+      height: 3px;
+      background: var(--accent);
+      margin-top: 18px;
+    }
+
+    /* Scroll-reveal */
+    .rv {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .rv.on {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===========================================
+       NAV
+    =========================================== */
+    #nav {
+      position: fixed;
+      inset-block-start: 0;
+      inset-inline: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px clamp(24px, 5vw, 60px);
+      border-bottom: 1px solid transparent;
+      transition: background .35s, border-color .35s;
+    }
+    #nav.bg {
+      background: rgba(13,13,13,.93);
+      border-bottom-color: var(--border-l);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .nav-logo {
+      font-family: var(--font-m);
+      font-size: 13px;
+      color: var(--accent);
+      letter-spacing: .08em;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 36px;
+    }
+    .nav-links a {
+      font-family: var(--font-m);
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--text-2);
+      position: relative;
+      transition: color .2s;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      inset-block-end: -3px;
+      inset-inline-start: 0;
+      width: 0;
+      height: 1px;
+      background: var(--accent);
+      transition: width .22s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--text); opacity: 1; }
+    .nav-links a:hover::after,
+    .nav-links a.active::after { width: 100%; }
+
+    .nav-ham {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+      z-index: 201;
+    }
+    .nav-ham span {
+      display: block;
+      width: 22px;
+      height: 1px;
+      background: var(--text);
+      transition: all .3s;
+    }
+    .nav-ham.open span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
+    .nav-ham.open span:nth-child(2) { opacity: 0; }
+    .nav-ham.open span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
+
+    /* ===========================================
+       HERO
+    =========================================== */
+    #hero {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      padding-block: 0;
+      position: relative;
+      overflow: hidden;
+      background: var(--bg);
+    }
+
+    /* Dot-grid background */
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle, #2a2a2a 1px, transparent 1px);
+      background-size: 36px 36px;
+      opacity: .5;
+      mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, black 30%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, black 30%, transparent 100%);
+    }
+
+    /* Accent bloom */
+    #hero::after {
+      content: '';
+      position: absolute;
+      top: 20%;
+      right: 0;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle at 70% 50%, var(--accent-glow) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+    }
+
+    /* Staggered entrance keyframes */
+    @keyframes up-in {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0);    }
+    }
+    @keyframes fade-in {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: .25; }
+    }
+    @keyframes scroll-line {
+      0%   { transform: scaleY(0); transform-origin: top; }
+      45%  { transform: scaleY(1); transform-origin: top; }
+      55%  { transform: scaleY(1); transform-origin: bottom; }
+      100% { transform: scaleY(0); transform-origin: bottom; }
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      font-family: var(--font-m);
+      font-size: 11px;
+      color: var(--accent);
+      border: 1px solid rgba(255,184,0,.4);
+      padding: 6px 14px;
+      border-radius: 2px;
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: up-in .6s ease .15s forwards;
+    }
+    .hero-badge-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse-dot 2.2s ease-in-out infinite;
+    }
+
+    .hero-name {
+      font-family: var(--font-h);
+      font-size: clamp(56px, 9vw, 104px);
+      font-weight: 800;
+      line-height: .93;
+      letter-spacing: -.03em;
+      opacity: 0;
+      animation: up-in .7s ease .35s forwards;
+    }
+    .hero-name .gold { color: var(--accent); }
+
+    .hero-sub {
+      margin-top: 22px;
+      opacity: 0;
+      animation: up-in .7s ease .55s forwards;
+    }
+    .hero-role {
+      font-family: var(--font-m);
+      font-size: clamp(13px, 1.6vw, 16px);
+      color: var(--text-2);
+      letter-spacing: .04em;
+    }
+    .hero-org {
+      font-family: var(--font-h);
+      font-size: clamp(16px, 2.2vw, 22px);
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    .hero-tagline {
+      margin-top: 28px;
+      padding-left: 18px;
+      border-left: 2px solid var(--accent);
+      font-size: clamp(15px, 1.8vw, 19px);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--text-2);
+      max-width: 520px;
+      opacity: 0;
+      animation: up-in .7s ease .75s forwards;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 44px;
+      opacity: 0;
+      animation: up-in .7s ease .95s forwards;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 26px;
+      font-family: var(--font-m);
+      font-size: 12px;
+      letter-spacing: .07em;
+      border-radius: var(--r);
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all .22s;
+    }
+    .btn-gold {
+      background: var(--accent);
+      color: #000;
+      border-color: var(--accent);
+    }
+    .btn-gold:hover {
+      background: transparent;
+      color: var(--accent);
+      opacity: 1;
+    }
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border-color: var(--border-l);
+    }
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      opacity: 1;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 48px;
+      flex-wrap: wrap;
+      margin-top: 60px;
+      padding-top: 44px;
+      border-top: 1px solid var(--border-l);
+      opacity: 0;
+      animation: up-in .7s ease 1.2s forwards;
+    }
+    .stat-n {
+      font-family: var(--font-h);
+      font-size: 38px;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .stat-l {
+      font-family: var(--font-m);
+      font-size: 10px;
+      color: var(--text-3);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin-top: 5px;
+    }
+
+    /* Circuit SVG decoration */
+    .hero-art {
+      position: absolute;
+      right: 4%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: clamp(260px, 35vw, 460px);
+      height: clamp(260px, 35vw, 460px);
+      opacity: 0;
+      animation: fade-in 2s ease 1.5s forwards;
+      pointer-events: none;
+    }
+
+    /* Scroll cue */
+    .scroll-cue {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 7px;
+      font-family: var(--font-m);
+      font-size: 9px;
+      color: var(--text-3);
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fade-in 1s ease 2.2s forwards;
+    }
+    .scroll-cue-line {
+      width: 1px;
+      height: 36px;
+      background: linear-gradient(to bottom, transparent, var(--accent));
+      animation: scroll-line 1.8s ease-in-out infinite;
+    }
+
+    /* ===========================================
+       ABOUT
+    =========================================== */
+    #about { background: var(--bg-2); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-text p {
+      font-size: 17px;
+      line-height: 1.85;
+      color: var(--text-2);
+      margin-bottom: 22px;
+    }
+    .about-text p strong { color: var(--text); font-weight: 600; }
+
+    .about-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 32px;
+    }
+    .pill {
+      font-family: var(--font-m);
+      font-size: 10px;
+      letter-spacing: .09em;
+      padding: 5px 12px;
+      border: 1px solid var(--border-l);
+      border-radius: 2px;
+      color: var(--text-2);
+      transition: all .2s;
+    }
+    .pill.accent {
+      border-color: rgba(255,184,0,.5);
+      color: var(--accent);
+    }
+    .pill:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .about-portrait {
+      aspect-ratio: 3/4;
+      background: var(--bg-3);
+      border: 1px solid var(--border-l);
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-portrait::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--accent);
+    }
+    .portrait-monogram {
+      font-family: var(--font-h);
+      font-size: 80px;
+      font-weight: 800;
+      color: var(--accent);
+      opacity: .2;
+      line-height: 1;
+      user-select: none;
+    }
+    .portrait-note {
+      font-family: var(--font-m);
+      font-size: 10px;
+      color: var(--text-3);
+      margin-top: 10px;
+      letter-spacing: .1em;
+    }
+
+    /* ===========================================
+       EXPERTISE
+    =========================================== */
+    #expertise { background: var(--bg); }
+
+    .exp-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2px;
+    }
+
+    .exp-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      padding: 30px 28px;
+      position: relative;
+      transition: border-color .25s, transform .25s, background .25s;
+      cursor: default;
+    }
+    .exp-card::before {
+      content: '';
+      position: absolute;
+      inset-block: 0;
+      inset-inline-start: 0;
+      width: 3px;
+      background: var(--accent);
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform .3s ease;
+    }
+    .exp-card:hover {
+      border-color: var(--border-l);
+      background: var(--bg-3);
+      transform: translateY(-5px);
+    }
+    .exp-card:hover::before { transform: scaleY(1); }
+
+    .exp-icon {
+      font-size: 22px;
+      margin-bottom: 14px;
+      display: block;
+      opacity: .7;
+    }
+    .exp-domain {
+      font-family: var(--font-h);
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      color: var(--text);
+    }
+    .skill-chips {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    .skill-chips li {
+      font-family: var(--font-m);
+      font-size: 10px;
+      color: var(--text-3);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 2px 7px;
+      border-radius: 2px;
+      transition: all .2s;
+    }
+    .exp-card:hover .skill-chips li {
+      color: var(--text-2);
+      border-color: var(--border-l);
+    }
+
+    /* ===========================================
+       EXPERIENCE
+    =========================================== */
+    #experience { background: var(--bg-2); }
+
+    .timeline {
+      position: relative;
+      max-width: 860px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      inset-block: 10px;
+      inset-inline-start: 148px;
+      width: 1px;
+      background: var(--border-l);
+    }
+
+    .tl-item {
+      display: grid;
+      grid-template-columns: 148px 1fr;
+      gap: 0 40px;
+      margin-bottom: 52px;
+      position: relative;
+    }
+    .tl-item:last-child { margin-bottom: 0; }
+
+    .tl-date {
+      font-family: var(--font-m);
+      font-size: 11px;
+      color: var(--text-3);
+      text-align: right;
+      padding-top: 5px;
+      line-height: 1.7;
+    }
+    .tl-date .tl-current {
+      font-size: 10px;
+      color: var(--accent);
+      display: block;
+    }
+
+    .tl-dot {
+      position: absolute;
+      inset-inline-start: 143px;
+      top: 8px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--bg-2);
+      box-shadow: 0 0 0 2px var(--accent);
+    }
+
+    .tl-body {}
+    .tl-role {
+      font-family: var(--font-h);
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 3px;
+    }
+    .tl-org {
+      font-family: var(--font-m);
+      font-size: 12px;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .tl-points {
+      list-style: none;
+    }
+    .tl-points li {
+      font-size: 14px;
+      color: var(--text-2);
+      padding-left: 18px;
+      position: relative;
+      margin-bottom: 7px;
+      line-height: 1.6;
+    }
+    .tl-points li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      opacity: .55;
+    }
+
+    /* ===========================================
+       PROJECTS
+    =========================================== */
+    #projects { background: var(--bg); }
+
+    .proj-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      gap: 22px;
+    }
+
+    .proj-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      position: relative;
+      overflow: hidden;
+      transition: all .3s;
+    }
+    .proj-card::after {
+      content: '';
+      position: absolute;
+      inset-block-end: 0;
+      inset-inline: 0;
+      height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .3s;
+    }
+    .proj-card:hover {
+      border-color: var(--border-l);
+      transform: translateY(-7px);
+      box-shadow: 0 28px 56px rgba(0,0,0,.45);
+    }
+    .proj-card:hover::after { transform: scaleX(1); }
+
+    .proj-num {
+      font-family: var(--font-m);
+      font-size: 11px;
+      color: var(--accent);
+      opacity: .45;
+    }
+    .proj-name {
+      font-family: var(--font-h);
+      font-size: 19px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    .proj-desc {
+      font-size: 14px;
+      color: var(--text-2);
+      line-height: 1.65;
+      flex: 1;
+    }
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    .tag {
+      font-family: var(--font-m);
+      font-size: 10px;
+      color: var(--text-3);
+      border: 1px solid var(--border);
+      padding: 2px 7px;
+      border-radius: 2px;
+      letter-spacing: .05em;
+    }
+    .proj-link {
+      font-family: var(--font-m);
+      font-size: 11px;
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 2px;
+    }
+
+    /* ===========================================
+       PUBLICATIONS
+    =========================================== */
+    #publications { background: var(--bg-2); }
+
+    .pub-list { max-width: 880px; }
+
+    .pub-item {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 20px;
+      align-items: start;
+      padding-block: 26px;
+      border-bottom: 1px solid var(--border);
+    }
+    .pub-item:first-of-type { border-top: 1px solid var(--border); }
+
+    .pub-n {
+      font-family: var(--font-m);
+      font-size: 13px;
+      color: var(--accent);
+      padding-top: 3px;
+    }
+    .pub-title {
+      font-family: var(--font-h);
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.35;
+      margin-bottom: 7px;
+    }
+    .pub-meta {
+      font-family: var(--font-m);
+      font-size: 11px;
+      color: var(--text-3);
+      line-height: 1.7;
+    }
+    .pub-meta .venue { color: var(--text-2); font-style: italic; }
+    .pub-meta .year  { color: var(--accent); }
+
+    .pub-placeholder {
+      font-family: var(--font-m);
+      font-size: 12px;
+      color: var(--text-3);
+      padding: 40px 0 0;
+      line-height: 1.8;
+    }
+    .pub-placeholder strong { color: var(--text-2); }
+
+    /* ===========================================
+       TALKS
+    =========================================== */
+    #talks { background: var(--bg); }
+
+    .talks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 2px;
+    }
+
+    .talk-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      padding: 26px;
+      transition: all .25s;
+    }
+    .talk-card:hover {
+      border-color: rgba(255,184,0,.5);
+      background: var(--accent-dim);
+    }
+    .talk-yr {
+      font-family: var(--font-m);
+      font-size: 11px;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .talk-title {
+      font-family: var(--font-h);
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .talk-event {
+      font-size: 13px;
+      color: var(--text-3);
+    }
+
+    /* ===========================================
+       CONTACT
+    =========================================== */
+    #contact {
+      background: var(--bg-2);
+      position: relative;
+    }
+    #contact::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-lede {
+      font-size: 20px;
+      font-weight: 300;
+      color: var(--text-2);
+      line-height: 1.65;
+      margin-bottom: 40px;
+    }
+    .contact-lede strong { color: var(--text); font-weight: 600; }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-family: var(--font-m);
+      font-size: 13px;
+      color: var(--text-2);
+      transition: color .2s;
+    }
+    .contact-row:hover { color: var(--accent); opacity: 1; }
+    .contact-icon {
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--border-l);
+      border-radius: var(--r);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      flex-shrink: 0;
+      transition: all .2s;
+    }
+    .contact-row:hover .contact-icon {
+      border-color: var(--accent);
+      background: var(--accent-dim);
+    }
+
+    /* Form */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .form-row {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .form-row label {
+      font-family: var(--font-m);
+      font-size: 10px;
+      color: var(--text-3);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .form-row input,
+    .form-row textarea {
+      background: var(--bg-3);
+      border: 1px solid var(--border-l);
+      border-radius: var(--r);
+      padding: 12px 16px;
+      color: var(--text);
+      font-family: var(--font-b);
+      font-size: 14px;
+      outline: none;
+      transition: border-color .2s;
+    }
+    .form-row input:focus,
+    .form-row textarea:focus { border-color: var(--accent); }
+    .form-row textarea { min-height: 110px; resize: vertical; }
+
+    /* ===========================================
+       FOOTER
+    =========================================== */
+    footer {
+      padding: 36px clamp(24px, 5vw, 60px);
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-m);
+      font-size: 11px;
+      color: var(--text-3);
+    }
+    .footer-r { display: flex; gap: 28px; }
+    footer a { color: var(--text-3); transition: color .2s; }
+    footer a:hover { color: var(--accent); opacity: 1; }
+
+    /* ===========================================
+       RESPONSIVE
+    =========================================== */
+    @media (max-width: 960px) {
+      :root { --pad: 72px; }
+
+      .hero-art { opacity: 0 !important; display: none; }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+      .about-portrait { max-width: 260px; }
+
+      .timeline::before { inset-inline-start: 0; }
+      .tl-item { grid-template-columns: 1fr; }
+      .tl-date { text-align: left; }
+      .tl-dot  { display: none; }
+
+      .contact-grid { grid-template-columns: 1fr; gap: 52px; }
+    }
+
+    @media (max-width: 680px) {
+      :root { --pad: 56px; }
+
+      #nav { padding: 16px 24px; }
+      .nav-links {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: var(--bg);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 36px;
+        z-index: 200;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { font-size: 18px; }
+      .nav-ham { display: flex; }
+
+      .hero-ctas { flex-direction: column; }
+      .btn { width: 100%; justify-content: center; }
+      .hero-stats { gap: 28px; }
+
+      .exp-grid,
+      .proj-grid,
+      .talks-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =====================
+       NAV
+  ===================== -->
+  <nav id="nav">
+    <span class="nav-logo">YH_</span>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#expertise">Expertise</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#publications">Research</a></li>
+      <li><a href="#talks">Talks</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <button class="nav-ham" id="navHam" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+
+  <!-- =====================
+       HERO
+  ===================== -->
+  <section id="hero">
+
+    <!-- Circuit board SVG art -->
+    <svg class="hero-art" viewBox="0 0 480 480" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <!-- Outer ring -->
+      <circle cx="240" cy="240" r="220" stroke="#FFB800" stroke-width=".4" stroke-dasharray="7 9" opacity=".6"/>
+      <!-- Middle square -->
+      <rect x="120" y="120" width="240" height="240" stroke="#FFB800" stroke-width=".8" fill="none" opacity=".7"/>
+      <!-- Inner square dashed -->
+      <rect x="148" y="148" width="184" height="184" stroke="#FFB800" stroke-width=".4" fill="none" stroke-dasharray="5 5" opacity=".5"/>
+      <!-- Core chip outline -->
+      <rect x="195" y="195" width="90" height="90" stroke="#FFB800" stroke-width="1.2" fill="rgba(255,184,0,.04)"/>
+      <!-- Core center -->
+      <circle cx="240" cy="240" r="8" fill="#FFB800" opacity=".5"/>
+      <circle cx="240" cy="240" r="18" stroke="#FFB800" stroke-width=".6" fill="none" opacity=".4"/>
+      <!-- Horizontal traces -->
+      <line x1="40"  y1="240" x2="195" y2="240" stroke="#FFB800" stroke-width=".8" opacity=".6"/>
+      <line x1="285" y1="240" x2="440" y2="240" stroke="#FFB800" stroke-width=".8" opacity=".6"/>
+      <!-- Vertical traces -->
+      <line x1="240" y1="40"  x2="240" y2="195" stroke="#FFB800" stroke-width=".8" opacity=".6"/>
+      <line x1="240" y1="285" x2="240" y2="440" stroke="#FFB800" stroke-width=".8" opacity=".6"/>
+      <!-- Diagonal traces -->
+      <line x1="120" y1="120" x2="195" y2="195" stroke="#FFB800" stroke-width=".5" opacity=".4"/>
+      <line x1="360" y1="120" x2="285" y2="195" stroke="#FFB800" stroke-width=".5" opacity=".4"/>
+      <line x1="120" y1="360" x2="195" y2="285" stroke="#FFB800" stroke-width=".5" opacity=".4"/>
+      <line x1="360" y1="360" x2="285" y2="285" stroke="#FFB800" stroke-width=".5" opacity=".4"/>
+      <!-- Corner pads -->
+      <rect x="112" y="112" width="16" height="16" stroke="#FFB800" stroke-width=".8" fill="rgba(255,184,0,.15)"/>
+      <rect x="352" y="112" width="16" height="16" stroke="#FFB800" stroke-width=".8" fill="rgba(255,184,0,.15)"/>
+      <rect x="112" y="352" width="16" height="16" stroke="#FFB800" stroke-width=".8" fill="rgba(255,184,0,.15)"/>
+      <rect x="352" y="352" width="16" height="16" stroke="#FFB800" stroke-width=".8" fill="rgba(255,184,0,.15)"/>
+      <!-- Via dots along traces -->
+      <circle cx="160" cy="240" r="3" fill="#FFB800" opacity=".4"/>
+      <circle cx="320" cy="240" r="3" fill="#FFB800" opacity=".4"/>
+      <circle cx="240" cy="160" r="3" fill="#FFB800" opacity=".4"/>
+      <circle cx="240" cy="320" r="3" fill="#FFB800" opacity=".4"/>
+      <!-- Extra branch traces -->
+      <polyline points="40,180 80,180 80,240"  stroke="#FFB800" stroke-width=".5" fill="none" opacity=".35"/>
+      <polyline points="40,300 80,300 80,240"  stroke="#FFB800" stroke-width=".5" fill="none" opacity=".35"/>
+      <polyline points="440,180 400,180 400,240" stroke="#FFB800" stroke-width=".5" fill="none" opacity=".35"/>
+      <polyline points="440,300 400,300 400,240" stroke="#FFB800" stroke-width=".5" fill="none" opacity=".35"/>
+      <!-- Connector pads on edge -->
+      <rect x="30"  y="173" width="10" height="14" fill="#FFB800" opacity=".3"/>
+      <rect x="30"  y="293" width="10" height="14" fill="#FFB800" opacity=".3"/>
+      <rect x="440" y="173" width="10" height="14" fill="#FFB800" opacity=".3"/>
+      <rect x="440" y="293" width="10" height="14" fill="#FFB800" opacity=".3"/>
+    </svg>
+
+    <div class="wrap">
+      <div class="hero-inner">
+
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          Open to Collaboration &amp; Advisory
+        </div>
+
+        <h1 class="hero-name">
+          Yassine<br><span class="gold">Hariri</span>
+        </h1>
+
+        <div class="hero-sub">
+          <div class="hero-role">Manager, IoT &amp; Edge AI &nbsp;·&nbsp; CTO Office</div>
+          <div class="hero-org">CMC Microsystems &nbsp;·&nbsp; Ottawa, Canada</div>
+        </div>
+
+        <p class="hero-tagline">
+          Bridging silicon to intelligence — from ASIC design floors to edge AI deployment at scale.
+        </p>
+
+        <div class="hero-ctas">
+          <!-- TODO: swap href once CV PDF is placed at cv/yassine-hariri-cv.pdf -->
+          <a href="#contact" class="btn btn-gold">Get in Touch ↓</a>
+          <a href="https://www.linkedin.com/in/yassinehariri" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn ↗</a>
+          <!-- TODO: add YouTube channel URL -->
+          <a href="#publications" class="btn btn-ghost">Research ↗</a>
+        </div>
+
+        <div class="hero-stats">
+          <div>
+            <div class="stat-n">17<span style="font-size:.6em;color:var(--text-2);">+</span></div>
+            <div class="stat-l">Years Experience</div>
+          </div>
+          <div>
+            <div class="stat-n">PhD</div>
+            <div class="stat-l">Electrical Engineering</div>
+          </div>
+          <div>
+            <div class="stat-n">5</div>
+            <div class="stat-l">Accelerating AI Editions</div>
+          </div>
+          <div>
+            <div class="stat-n">3</div>
+            <div class="stat-l">Languages</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="scroll-cue">
+      <span>Scroll</span>
+      <span class="scroll-cue-line"></span>
+    </div>
+  </section>
+
+
+  <!-- =====================
+       ABOUT
+  ===================== -->
+  <section id="about">
+    <div class="wrap">
+      <p class="s-label rv">Profile</p>
+      <h2 class="s-title rv">About Me</h2>
+
+      <div class="about-grid">
+
+        <div class="about-text rv">
+          <p>
+            <strong>Yassine Hariri</strong> is a PhD electrical engineer and technology leader with over 17 years at the intersection of semiconductor hardware, embedded intelligence, and national research infrastructure. Currently serving as <strong>Manager of IoT &amp; Edge AI in the CTO Office at CMC Microsystems, Ottawa</strong>, he sits at the convergence of Canada's national chip design ecosystem and the applied AI deployment frontier.
+          </p>
+          <p>
+            His technical foundation is deep and wide — from <strong>ASIC tape-out flows</strong> (RTL → synthesis → place &amp; route → DRC/LVS, with Synopsys, Cadence, and Mentor toolchains) and <strong>FPGA/SoC design</strong> (Xilinx/AMD, VHDL, HLS, radiation-tolerant architectures) to <strong>edge AI inference</strong> on NVIDIA Jetson platforms using TensorRT and YOLOv9. His research roots are in fault diagnostics (ΔIDDQ, ATPG), SRAM soft-error analysis, and MEMS RF switch characterization.
+          </p>
+          <p>
+            Beyond engineering, Yassine leads <strong>national industry-academia-government programs</strong>, mentors deep-tech startups through AI commercialization, and curates hands-on education through his <em>Accelerating AI</em> workshop series. He also runs a <strong>YouTube channel on IoT &amp; Edge AI</strong>, building a public engineering knowledge commons — in English, French, and Arabic.
+          </p>
+
+          <div class="about-pills">
+            <span class="pill accent">PhD · ÉTS Montréal</span>
+            <span class="pill accent">CMC Microsystems</span>
+            <span class="pill">Ottawa, Canada</span>
+            <span class="pill">English · Français · العربية</span>
+            <span class="pill">ASIC · FPGA · Edge AI</span>
+            <span class="pill">YouTube Creator</span>
+            <span class="pill">National Programs</span>
+          </div>
+        </div>
+
+        <div class="about-portrait rv">
+          <div class="portrait-monogram">YH</div>
+          <!-- TODO: Replace the monogram with a real photo:
+               Save photo as images/yassine.jpg, then replace the
+               portrait-monogram div with:
+               <img src="images/yassine.jpg" alt="Yassine Hariri"
+                    style="width:100%;height:100%;object-fit:cover;border-radius:4px;" />
+          -->
+          <div class="portrait-note">// photo</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =====================
+       EXPERTISE
+  ===================== -->
+  <section id="expertise">
+    <div class="wrap">
+      <p class="s-label rv">Technical Domains</p>
+      <h2 class="s-title rv">Expertise</h2>
+
+      <div class="exp-grid">
+
+        <div class="exp-card rv">
+          <span class="exp-icon">⬡</span>
+          <div class="exp-domain">ASIC Design</div>
+          <ul class="skill-chips">
+            <li>RTL Design</li>
+            <li>Logic Synthesis</li>
+            <li>Place &amp; Route</li>
+            <li>DRC / LVS</li>
+            <li>Synopsys</li>
+            <li>Cadence</li>
+            <li>Mentor Graphics</li>
+            <li>VHDL</li>
+            <li>ΔIDDQ Diagnostics</li>
+            <li>ATPG</li>
+          </ul>
+        </div>
+
+        <div class="exp-card rv">
+          <span class="exp-icon">⬢</span>
+          <div class="exp-domain">FPGA / SoC Design</div>
+          <ul class="skill-chips">
+            <li>Xilinx / AMD</li>
+            <li>VHDL</li>
+            <li>High-Level Synthesis</li>
+            <li>Radiation-Tolerant</li>
+            <li>HW/SW Co-Design</li>
+            <li>Multi-Core</li>
+            <li>SoC Integration</li>
+          </ul>
+        </div>
+
+        <div class="exp-card rv">
+          <span class="exp-icon">◈</span>
+          <div class="exp-domain">Edge AI &amp; Inference</div>
+          <ul class="skill-chips">
+            <li>NVIDIA Jetson Orin</li>
+            <li>Jetson AGX</li>
+            <li>TensorRT</li>
+            <li>YOLOv9</li>
+            <li>CUDA</li>
+            <li>NPU Acceleration</li>
+            <li>Model Quantization</li>
+            <li>INT8 / FP16</li>
+          </ul>
+        </div>
+
+        <div class="exp-card rv">
+          <span class="exp-icon">◇</span>
+          <div class="exp-domain">Embedded Systems</div>
+          <ul class="skill-chips">
+            <li>Bare-Metal</li>
+            <li>RTOS</li>
+            <li>C / C++</li>
+            <li>Python</li>
+            <li>Multi-Core</li>
+            <li>Real-Time</li>
+            <li>TCL / Perl / Shell</li>
+          </ul>
+        </div>
+
+        <div class="exp-card rv">
+          <span class="exp-icon">⊡</span>
+          <div class="exp-domain">IoT &amp; Cloud-to-Edge</div>
+          <ul class="skill-chips">
+            <li>IoT Platforms</li>
+            <li>5G Connectivity</li>
+            <li>Real-Time Analytics</li>
+            <li>Edge Deployment</li>
+            <li>Sensor Fusion</li>
+            <li>Python</li>
+          </ul>
+        </div>
+
+        <div class="exp-card rv">
+          <span class="exp-icon">∿</span>
+          <div class="exp-domain">Software-Defined Radio</div>
+          <ul class="skill-chips">
+            <li>SystemC</li>
+            <li>Multi-Core Modeling</li>
+            <li>MEMS RF Switches</li>
+            <li>Signal Processing</li>
+            <li>Behavioral Simulation</li>
+          </ul>
+        </div>
+
+        <div class="exp-card rv">
+          <span class="exp-icon">⊞</span>
+          <div class="exp-domain">Research</div>
+          <ul class="skill-chips">
+            <li>Fault Diagnostics</li>
+            <li>ΔIDDQ / ATPG</li>
+            <li>SRAM Soft Error</li>
+            <li>MEMS RF</li>
+            <li>Radiation Effects</li>
+            <li>Test Engineering</li>
+          </ul>
+        </div>
+
+        <div class="exp-card rv">
+          <span class="exp-icon">◎</span>
+          <div class="exp-domain">Leadership &amp; Strategy</div>
+          <ul class="skill-chips">
+            <li>Program Management</li>
+            <li>Cross-Functional Teams</li>
+            <li>National Initiatives</li>
+            <li>Startup Mentorship</li>
+            <li>AI Commercialization</li>
+            <li>Workshop Design</li>
+            <li>VSCode · GitLab · Conda</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =====================
+       EXPERIENCE
+  ===================== -->
+  <section id="experience">
+    <div class="wrap">
+      <p class="s-label rv">Career</p>
+      <h2 class="s-title rv">Experience</h2>
+
+      <div class="timeline">
+
+        <div class="tl-item rv">
+          <div class="tl-date">
+            <span class="tl-current">Present</span>
+            <!-- TODO: add start year from Profile.pdf -->
+            ↑<br><!-- TODO: YYYY -->
+          </div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-role">Manager, IoT &amp; Edge AI</div>
+            <div class="tl-org">CMC Microsystems · CTO Office · Ottawa, Canada</div>
+            <ul class="tl-points">
+              <li>Defines and executes the IoT &amp; Edge AI strategy within the CTO Office, aligning national programs across industry, academia, and government around semiconductor and AI infrastructure.</li>
+              <li>Managing the <strong>FABrIC Semiconductor Upskill Program</strong> — program strategy, ITAG outreach, training area definition, stakeholder coordination, and documentation.</li>
+              <li>Leading edge AI video surveillance research: YOLOv9 object detection on NVIDIA Jetson Orin Nano with TensorRT, from model benchmarking through production code review.</li>
+              <li>Organizes the annual <em>Accelerating AI</em> workshop series (2020–2025), shaping Canada's applied AI talent pipeline across five consecutive editions.</li>
+              <li>YouTube content creator — <em>IoT &amp; Edge AI</em> — delivering hands-on tutorials on Jetson platforms, edge inference pipelines, and IoT deployment patterns.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!--
+          TODO: Add remaining career history from Profile.pdf.
+          Duplicate the block below for each past role:
+
+        <div class="tl-item rv">
+          <div class="tl-date">YYYY<br>–<br>YYYY</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-role">Job Title</div>
+            <div class="tl-org">Organization · Location</div>
+            <ul class="tl-points">
+              <li>Achievement / responsibility 1</li>
+              <li>Achievement / responsibility 2</li>
+              <li>Achievement / responsibility 3</li>
+            </ul>
+          </div>
+        </div>
+        -->
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =====================
+       PROJECTS
+  ===================== -->
+  <section id="projects">
+    <div class="wrap">
+      <p class="s-label rv">Selected Work</p>
+      <h2 class="s-title rv">Projects</h2>
+
+      <div class="proj-grid">
+
+        <div class="proj-card rv">
+          <div class="proj-num">01</div>
+          <div class="proj-name">FABrIC Semiconductor Upskill Program</div>
+          <p class="proj-desc">
+            National semiconductor workforce development initiative under CMC Microsystems. Full program management — ITAG outreach, training area scoping, stakeholder coordination across industry, academia, and government, and structured documentation strategy.
+          </p>
+          <div class="tag-row">
+            <span class="tag">Program Management</span>
+            <span class="tag">Semiconductors</span>
+            <span class="tag">National Initiative</span>
+            <span class="tag">Training Design</span>
+          </div>
+        </div>
+
+        <div class="proj-card rv">
+          <div class="proj-num">02</div>
+          <div class="proj-name">Edge AI Video Surveillance</div>
+          <p class="proj-desc">
+            End-to-end real-time inference pipeline for video surveillance on edge hardware. YOLOv9 deployed on NVIDIA Jetson Orin Nano with TensorRT-optimized engine — covers model selection, calibration, INT8 quantization, deployment, and code review.
+          </p>
+          <div class="tag-row">
+            <span class="tag">YOLOv9</span>
+            <span class="tag">Jetson Orin Nano</span>
+            <span class="tag">TensorRT</span>
+            <span class="tag">CUDA</span>
+            <span class="tag">Python</span>
+          </div>
+        </div>
+
+        <div class="proj-card rv">
+          <div class="proj-num">03</div>
+          <div class="proj-name">Accelerating AI Workshop Series</div>
+          <p class="proj-desc">
+            Annual national workshop series (2020–2025) connecting Canadian engineers and researchers with hands-on AI hardware and software education. Five consecutive editions, evolving from introductory edge inference to advanced deployment architectures.
+          </p>
+          <div class="tag-row">
+            <span class="tag">Edge AI</span>
+            <span class="tag">Workshop Design</span>
+            <span class="tag">2020–2025</span>
+            <span class="tag">Canada-Wide</span>
+          </div>
+        </div>
+
+        <div class="proj-card rv">
+          <div class="proj-num">04</div>
+          <div class="proj-name">IoT &amp; Edge AI — YouTube Channel</div>
+          <p class="proj-desc">
+            Original technical content channel documenting real experiments in IoT deployment, Jetson platform setup, edge inference pipelines, and applied AI. Designed for practitioners — engineers, researchers, and builders working at the hardware-AI boundary.
+          </p>
+          <div class="tag-row">
+            <span class="tag">IoT</span>
+            <span class="tag">Edge AI</span>
+            <span class="tag">Jetson</span>
+            <span class="tag">Content Creation</span>
+          </div>
+          <!-- TODO: add YouTube channel href -->
+          <a href="#" class="proj-link">Watch on YouTube ↗</a>
+        </div>
+
+        <!-- TODO: add additional projects from Profile.pdf -->
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =====================
+       PUBLICATIONS
+  ===================== -->
+  <section id="publications">
+    <div class="wrap">
+      <p class="s-label rv">Academic Output</p>
+      <h2 class="s-title rv">Publications &amp; Research</h2>
+
+      <div class="pub-list">
+
+        <!--
+          TODO: Populate from Profile.pdf — known research domains:
+          · ΔIDDQ-based fault diagnostics
+          · ATPG (Automatic Test Pattern Generation)
+          · SRAM soft error analysis / radiation effects
+          · MEMS RF switch characterization
+          · Radiation-tolerant FPGA/ASIC design
+
+          Entry format:
+          <div class="pub-item rv">
+            <div class="pub-n">01</div>
+            <div>
+              <div class="pub-title">Paper Title Here</div>
+              <div class="pub-meta">
+                Y. Hariri et al. &nbsp;·&nbsp;
+                <span class="venue">Journal / Conference Name</span> &nbsp;·&nbsp;
+                <span class="year">YYYY</span>
+              </div>
+            </div>
+          </div>
+        -->
+
+        <div class="pub-item rv">
+          <div class="pub-n">—</div>
+          <div>
+            <div class="pub-title" style="color:var(--text-3); font-style:italic;">Publications to be added — see Profile.pdf</div>
+            <div class="pub-meta">
+              Known research areas: &nbsp;
+              <span class="venue">ΔIDDQ fault diagnostics · ATPG · SRAM soft error · MEMS RF switches · radiation-tolerant design</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pub-placeholder rv">
+        PhD: <strong>École de Technologie Supérieure (ÉTS), Montréal</strong> · Electrical Engineering<br>
+        <!-- TODO: add thesis title and year -->
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =====================
+       TALKS
+  ===================== -->
+  <section id="talks">
+    <div class="wrap">
+      <p class="s-label rv">Public Speaking</p>
+      <h2 class="s-title rv">Talks &amp; Workshops</h2>
+
+      <div class="talks-grid">
+
+        <div class="talk-card rv">
+          <div class="talk-yr">2020 · 2021 · 2022 · 2023 · 2024 · 2025</div>
+          <div class="talk-title">Accelerating AI Workshop Series</div>
+          <div class="talk-event">Annual National Workshop · CMC Microsystems</div>
+        </div>
+
+        <!--
+          TODO: Add remaining talks and conference appearances from Profile.pdf.
+          Format:
+          <div class="talk-card rv">
+            <div class="talk-yr">YYYY</div>
+            <div class="talk-title">Talk / Presentation Title</div>
+            <div class="talk-event">Event Name · Location</div>
+          </div>
+        -->
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =====================
+       CONTACT
+  ===================== -->
+  <section id="contact">
+    <div class="wrap">
+      <p class="s-label rv">Let's Connect</p>
+      <h2 class="s-title rv">Contact</h2>
+
+      <div class="contact-grid">
+
+        <div class="rv">
+          <p class="contact-lede">
+            Open to <strong>research collaborations</strong>, <strong>speaking engagements</strong>,
+            and <strong>strategic advisory roles</strong> in edge AI, semiconductor upskilling,
+            and deep-tech commercialization.
+          </p>
+
+          <div class="contact-links">
+
+            <a href="mailto:yassine.cmc.hariri@gmail.com" class="contact-row">
+              <span class="contact-icon">✉</span>
+              yassine.cmc.hariri@gmail.com
+            </a>
+
+            <!-- TODO: confirm LinkedIn URL -->
+            <a href="https://www.linkedin.com/in/yassinehariri" target="_blank" rel="noopener" class="contact-row">
+              <span class="contact-icon" style="font-family:var(--font-h);font-size:12px;font-weight:700;">in</span>
+              LinkedIn
+            </a>
+
+            <!-- TODO: add GitHub URL and handle -->
+            <a href="#" class="contact-row">
+              <span class="contact-icon">&#9651;</span>
+              GitHub <!-- TODO: @handle -->
+            </a>
+
+            <!-- TODO: add YouTube channel URL -->
+            <a href="#" class="contact-row">
+              <span class="contact-icon">&#9658;</span>
+              YouTube — IoT &amp; Edge AI
+            </a>
+
+          </div>
+        </div>
+
+        <div class="rv">
+          <form class="contact-form"
+                action="mailto:yassine.cmc.hariri@gmail.com"
+                method="get"
+                enctype="text/plain">
+            <div class="form-row">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name" autocomplete="name" />
+            </div>
+            <div class="form-row">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" placeholder="What's this about?" />
+            </div>
+            <div class="form-row">
+              <label for="msg">Message</label>
+              <textarea id="msg" name="body" placeholder="Your message…"></textarea>
+            </div>
+            <button type="submit" class="btn btn-gold" style="width:100%;justify-content:center;margin-top:4px;">
+              Send Message →
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =====================
+       FOOTER
+  ===================== -->
+  <footer>
+    <span>© 2026 Yassine Hariri</span>
+    <div class="footer-r">
+      <span style="color:var(--text-3)">Built with precision.</span>
+      <a href="#hero">↑ Top</a>
+    </div>
+  </footer>
+
+
+  <!-- =====================
+       JS
+  ===================== -->
+  <script>
+    /* ---- Nav: scroll background ---- */
+    const nav   = document.getElementById('nav');
+    const ham   = document.getElementById('navHam');
+    const links = document.getElementById('navLinks');
+
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('bg', window.scrollY > 50);
+    }, { passive: true });
+
+    /* ---- Mobile menu ---- */
+    ham.addEventListener('click', () => {
+      ham.classList.toggle('open');
+      links.classList.toggle('open');
+    });
+    links.querySelectorAll('a').forEach(a =>
+      a.addEventListener('click', () => {
+        ham.classList.remove('open');
+        links.classList.remove('open');
+      })
+    );
+
+    /* ---- Scroll-reveal via IntersectionObserver ---- */
+    const revealEls = document.querySelectorAll('.rv');
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+
+        // Stagger siblings within same parent
+        const parent = entry.target.parentElement;
+        const siblings = [...parent.querySelectorAll('.rv:not(.on)')];
+        const idx = siblings.indexOf(entry.target);
+        const delay = Math.min(idx * 75, 400); // cap at 400ms
+
+        setTimeout(() => entry.target.classList.add('on'), delay);
+        io.unobserve(entry.target);
+      });
+    }, {
+      threshold: 0.08,
+      rootMargin: '0px 0px -32px 0px'
+    });
+
+    revealEls.forEach(el => io.observe(el));
+
+    /* ---- Active nav highlight on scroll ---- */
+    const sections   = document.querySelectorAll('section[id]');
+    const navAnchors = document.querySelectorAll('.nav-links a');
+
+    const sectionIO = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const id = entry.target.id;
+        navAnchors.forEach(a => {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+        });
+      });
+    }, { threshold: 0.35 });
+
+    sections.forEach(s => sectionIO.observe(s));
+  </script>
+
+</body>
+</html>
